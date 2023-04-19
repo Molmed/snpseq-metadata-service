@@ -1,0 +1,30 @@
+2023-04-19 11:01:14,053 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:01:14 +0000] "GET /api/1.0/version HTTP/1.1" 200 177 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:01:14,056 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:01:14,057 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:01:14,124 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:17:22,800 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:17:22 +0000] "GET /api/1.0/version HTTP/1.1" 200 177 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:17:22,803 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:17:22,804 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:17:23,179 - metadata_service.handlers - DEBUG - 
+2023-04-19 11:17:23,180 - metadata_service.handlers - INFO - /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata extract runfolder --outdir /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractkds1l1h0runfolder tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY json exited with exit-code 0
+2023-04-19 11:17:23,212 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:17:23 +0000] "GET /api/containers?name=XYZ321XY HTTP/1.1" 200 6193 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:17:23,418 - metadata_service.handlers - DEBUG - 
+
+2023-04-19 11:17:23,418 - metadata_service.handlers - INFO - /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata extract snpseq-data --outdir /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractkds1l1h0runfolder /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractkds1l1h0runfolder/XYZ321XY.lims.json json exited with exit-code 0
+2023-04-19 11:17:23,621 - metadata_service.handlers - DEBUG - 
+2023-04-19 11:17:23,622 - metadata_service.handlers - INFO - /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata export --outdir tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/metadata /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractkds1l1h0runfolder/210415_A00001_0123_BXYZ321XY.ngi.json /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractkds1l1h0runfolder/XYZ321XY.lims.ngi.json xml exited with exit-code 0
+2023-04-19 11:17:23,623 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:17:22 +0000] "GET /api/1.0/export/test_data/210415_A00001_0123_BXYZ321XY HTTP/1.1" 200 697 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:17:23,627 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:26:55,977 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:26:55 +0000] "GET /api/1.0/version HTTP/1.1" 200 177 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:26:55,980 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:26:55,981 - asyncio - DEBUG - Using selector: KqueueSelector
+2023-04-19 11:26:56,230 - metadata_service.handlers - DEBUG - 
+2023-04-19 11:26:56,230 - metadata_service.handlers - INFO - /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata extract runfolder --outdir /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractaaloo5v5runfolder tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY json exited with exit-code 0
+2023-04-19 11:26:56,260 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:26:56 +0000] "GET /api/containers?name=XYZ321XY HTTP/1.1" 200 6193 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:26:56,513 - metadata_service.handlers - DEBUG - 
+
+2023-04-19 11:26:56,513 - metadata_service.handlers - INFO - /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata extract snpseq-data --outdir /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractaaloo5v5runfolder /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractaaloo5v5runfolder/XYZ321XY.lims.json json exited with exit-code 0
+2023-04-19 11:26:56,784 - metadata_service.handlers - DEBUG - 
+2023-04-19 11:26:56,784 - metadata_service.handlers - INFO - /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata export --outdir tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/metadata /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractaaloo5v5runfolder/210415_A00001_0123_BXYZ321XY.ngi.json /var/folders/nj/xc7h12ws7955b54g56f5yvjw0000gp/T/extractaaloo5v5runfolder/XYZ321XY.lims.ngi.json xml exited with exit-code 0
+2023-04-19 11:26:56,786 - aiohttp.access - INFO - 127.0.0.1 [19/Apr/2023:09:26:56 +0000] "GET /api/1.0/export/test_data/210415_A00001_0123_BXYZ321XY HTTP/1.1" 200 697 "-" "Python/3.9 aiohttp/3.8.4"
+2023-04-19 11:26:56,789 - asyncio - DEBUG - Using selector: KqueueSelector

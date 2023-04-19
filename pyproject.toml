@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["metadata_service*"]
+
+[project]
+name = "metadata-service"
+version = "1.0.0"
+authors = [
+    {name = "SNP&SEQ Technology Platform, Uppsala University", email = "seq@medsci.uu.se" },
+]
+keywords = ["bioinformatics"]
+description = "Micro-service for exporting sequencing-related metadata"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+dependencies = [
+    "aiohttp",
+    "pyyaml"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest-asyncio",
+    "pytest-aiohttp"
+]
+
+[project.scripts]
+metadata-service = "metadata_service.app:start"
+
+[project.urls]
+homepage = "https://github.com/Molmed/snpseq-metadata-service"

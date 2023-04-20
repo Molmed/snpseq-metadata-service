@@ -8,15 +8,25 @@ import yaml
 
 import aiohttp.web
 
-from metadata_service.handlers import export, version
+from metadata_service.clients import SnpseqDataRequest
+from metadata_service.handlers import ExportHandler, VersionHandler
+from metadata_service.process import MetadataProcessRunner
 
 
 log = logging.getLogger(__name__)
 
 
 def setup_routes(app):
-    app.router.add_get(app["config"]["base_url"] + "/version", version)
-    app.router.add_get(app["config"]["base_url"] + "/export/{host}/{runfolder}", export)
+    metadata_exec = app["config"].get(
+        "snpseq_metadata_executable",
+        "snpseq_metadata")
+    proc_run = MetadataProcessRunner(
+        metadata_executable=metadata_exec)
+
+    export = ExportHandler(process_runner=proc_run)
+    version = VersionHandler()
+    app.router.add_get(app["config"]["base_url"] + "/version", version.version)
+    app.router.add_get(app["config"]["base_url"] + "/export/{host}/{runfolder}", export.export)
 
 
 def setup_log(config):
@@ -75,7 +85,9 @@ def setup_app(cfgroot):
     conf = load_config(cfgroot)
     app = aiohttp.web.Application()
     app['config'] = conf
-    app.cleanup_ctx.append(data_session)
+    session = SnpseqDataRequest(conf.get("snpseq_data_url"))
+    app['session'] = session
+    app.cleanup_ctx.append(session.external_session)
     setup_routes(app)
     return app
 

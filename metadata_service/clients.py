@@ -24,10 +24,15 @@ class ExternalRequest:
 
 class SnpseqDataRequest(ExternalRequest):
 
+    @staticmethod
+    def flowcellid_from_runfolder(runfolder):
+        flowcell_id = os.path.basename(runfolder).split("_")[-1]
+        flowcell_id = flowcell_id[1:] if flowcell_id[0] in "AB" else flowcell_id
+        return flowcell_id
+
     @safe_outdir
     async def request_snpseq_data_metadata(self, runfolder_path, outdir):
-        flowcell_id = os.path.basename(runfolder_path).split("_")[-1]
-        flowcell_id = flowcell_id[1:] if flowcell_id[0] in "AB" else flowcell_id
+        flowcell_id = self.flowcellid_from_runfolder(runfolder_path)
         lims_json = os.path.join(outdir, f"{flowcell_id}.lims.json")
         resp = await self.session.get(
             '/api/containers',

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EXPERIMENT_SET>
+  <EXPERIMENT alias="AB-1234-AB-1234-SampleA-1-NovaSeq">
+    <TITLE>AB-1234 - AB-1234-SampleA-1 - WG re-seq Human - gDNA - TruSeq DNA PCR-Free Sample Preparation kit LT</TITLE>
+    <STUDY_REF refname="AB-1234"/>
+    <DESIGN>
+      <SAMPLE_DESCRIPTOR refname="AB-1234-SampleA-1"/>
+      <LIBRARY_DESCRIPTOR>
+        <LIBRARY_STRATEGY>WGS</LIBRARY_STRATEGY>
+        <LIBRARY_SOURCE>GENOMIC</LIBRARY_SOURCE>
+        <LIBRARY_SELECTION>RANDOM</LIBRARY_SELECTION>
+        <LIBRARY_LAYOUT>
+          <PAIRED/>
+        </LIBRARY_LAYOUT>
+      </LIBRARY_DESCRIPTOR>
+    </DESIGN>
+    <PLATFORM>
+      <ILLUMINA>
+        <INSTRUMENT_MODEL>Illumina NovaSeq 6000</INSTRUMENT_MODEL>
+      </ILLUMINA>
+    </PLATFORM>
+  </EXPERIMENT>
+  <EXPERIMENT alias="AB-1234-AB-1234-SampleA-2-NovaSeq">
+    <TITLE>AB-1234 - AB-1234-SampleA-2 - WG re-seq - gDNA - thruplex smarter dna-seq kit</TITLE>
+    <STUDY_REF refname="AB-1234"/>
+    <DESIGN>
+      <SAMPLE_DESCRIPTOR refname="AB-1234-SampleA-2"/>
+      <LIBRARY_DESCRIPTOR>
+        <LIBRARY_STRATEGY>WGS</LIBRARY_STRATEGY>
+        <LIBRARY_SOURCE>GENOMIC</LIBRARY_SOURCE>
+        <LIBRARY_SELECTION>RANDOM</LIBRARY_SELECTION>
+        <LIBRARY_LAYOUT>
+          <PAIRED/>
+        </LIBRARY_LAYOUT>
+      </LIBRARY_DESCRIPTOR>
+    </DESIGN>
+    <PLATFORM>
+      <ILLUMINA>
+        <INSTRUMENT_MODEL>Illumina NovaSeq 6000</INSTRUMENT_MODEL>
+      </ILLUMINA>
+    </PLATFORM>
+  </EXPERIMENT>
+  <EXPERIMENT alias="AB-1234-AB-1234-SampleB-NovaSeq">
+    <TITLE>AB-1234 - AB-1234-SampleB - olink explore - serum - olink explore 1536</TITLE>
+    <STUDY_REF refname="AB-1234"/>
+    <DESIGN>
+      <SAMPLE_DESCRIPTOR refname="AB-1234-SampleB"/>
+      <LIBRARY_DESCRIPTOR>
+        <LIBRARY_STRATEGY>OTHER</LIBRARY_STRATEGY>
+        <LIBRARY_SOURCE>OTHER</LIBRARY_SOURCE>
+        <LIBRARY_SELECTION>unspecified</LIBRARY_SELECTION>
+        <LIBRARY_LAYOUT>
+          <PAIRED/>
+        </LIBRARY_LAYOUT>
+      </LIBRARY_DESCRIPTOR>
+    </DESIGN>
+    <PLATFORM>
+      <ILLUMINA>
+        <INSTRUMENT_MODEL>Illumina NovaSeq 6000</INSTRUMENT_MODEL>
+      </ILLUMINA>
+    </PLATFORM>
+  </EXPERIMENT>
+</EXPERIMENT_SET>

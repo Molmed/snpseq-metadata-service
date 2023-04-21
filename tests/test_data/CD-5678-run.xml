@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RUN_SET>
+  <RUN center_name="National Genomics Infrastructure, Uppsala" run_date="2021-04-15T00:00:00" run_center="National Genomics Infrastructure, Uppsala">
+    <TITLE>CD-5678-CD-5678-SampleA-1-BXYZ321XY</TITLE>
+    <EXPERIMENT_REF refname="CD-5678-CD-5678-SampleA-1-NovaSeq"/>
+    <DATA_BLOCK>
+      <FILES>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L001_R1_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="05b5b747622c93263c8841ce25fde438"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L001_R2_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="f74c58e2b2045e7c98501db6fc00accb"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L003_R1_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="97c71529c101eb0fe7d074a1d997b8fb"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L003_R2_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="78b4ffb6f960dbef316f8c6f113a7c5f"/>
+      </FILES>
+    </DATA_BLOCK>
+  </RUN>
+  <RUN center_name="National Genomics Infrastructure, Uppsala" run_date="2021-04-15T00:00:00" run_center="National Genomics Infrastructure, Uppsala">
+    <TITLE>CD-5678-CD-5678-SampleA-2-BXYZ321XY</TITLE>
+    <EXPERIMENT_REF refname="CD-5678-CD-5678-SampleA-2-NovaSeq"/>
+    <DATA_BLOCK>
+      <FILES>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L001_R1_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="540572f70c8d47213bb046d1accc2532"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L001_R2_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="46948c9a70df0185cd88db2e108c012e"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L003_R1_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="0e7c27a4571a02f7a079448784d22194"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L003_R2_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="e4e734f9f41d754dfe09083e8726f1ab"/>
+      </FILES>
+    </DATA_BLOCK>
+  </RUN>
+  <RUN center_name="National Genomics Infrastructure, Uppsala" run_date="2021-04-15T00:00:00" run_center="National Genomics Infrastructure, Uppsala">
+    <TITLE>CD-5678-CD-5678-SampleB-BXYZ321XY</TITLE>
+    <EXPERIMENT_REF refname="CD-5678-CD-5678-SampleB-NovaSeq"/>
+    <DATA_BLOCK>
+      <FILES>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L001_R1_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="dac4c8dd69843e6cdc997cef3122c404"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L001_R2_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="1611c36835b1a2560fd82150735fd22e"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L003_R1_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="31a9e96d6cf59599889e111d154df900"/>
+        <FILE filename="tests/test_data/runfolders/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L003_R2_001.fastq.gz" filetype="fastq" checksum_method="MD5" checksum="bb921ed31f96fd699bb2c6ee53d06ea5"/>
+      </FILES>
+    </DATA_BLOCK>
+  </RUN>
+</RUN_SET>

@@ -1,6 +1,6 @@
 # snpseq-metadata-service
 
-[![Run Unit Tests](../../actions/workflows/tests.yml/badge.svg?branch=add_readme&event=push)](../../actions/workflows/tests.yml)
+[![Run Unit Tests](../../actions/workflows/tests.yml/badge.svg?branch=develop&event=push)](../../actions/workflows/tests.yml)
 
 A (aiohttp) REST service that coordinates the extraction and export of metadata information for projects and sequencing
 runs.

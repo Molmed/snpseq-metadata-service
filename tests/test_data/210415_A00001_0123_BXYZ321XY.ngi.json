@@ -1,0 +1,272 @@
+{
+  "runfolder_path": "tests/resources/210415_A00001_0123_BXYZ321XY",
+  "runfolder_name": "210415_A00001_0123_BXYZ321XY",
+  "flowcell_id": "BXYZ321XY",
+  "samplesheet": "fc_SampleSheet.csv",
+  "run_parameters": "RunParameters.xml",
+  "checksum_method": "MD5",
+  "platform": {
+    "model_name": "NovaSeq"
+  },
+  "run_date": "2021-04-15T00:00:00",
+  "sequencing_runs": [
+    {
+      "run_alias": "AB-1234-AB-1234-SampleA-1-BXYZ321XY",
+      "run_center": "National Genomics Infrastructure, Uppsala",
+      "experiment": {
+        "alias": "AB-1234-AB-1234-SampleA-1-NovaSeq",
+        "project": {
+          "project_id": "AB-1234"
+        },
+        "sample": {
+          "sample_id": "AB-1234-SampleA-1"
+        }
+      },
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "run_date": "2021-04-15T00:00:00",
+      "fastqfiles": [
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-1/AB-1234-SampleA-1_S1_L001_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "8df33e868951c1e56b6831a2df0ff87d",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-1/AB-1234-SampleA-1_S1_L001_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "77bc05ab62ea44a3e5051e5bd558c126",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-1/AB-1234-SampleA-1_S1_L002_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "09d5a72ee196c5493562ce5890134519",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-1/AB-1234-SampleA-1_S1_L002_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "cd664b5be5ac69168c92e7c9002f7f1e",
+          "checksum_method": "MD5"
+        }
+      ]
+    },
+    {
+      "run_alias": "AB-1234-AB-1234-SampleA-2-BXYZ321XY",
+      "run_center": "National Genomics Infrastructure, Uppsala",
+      "experiment": {
+        "alias": "AB-1234-AB-1234-SampleA-2-NovaSeq",
+        "project": {
+          "project_id": "AB-1234"
+        },
+        "sample": {
+          "sample_id": "AB-1234-SampleA-2"
+        }
+      },
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "run_date": "2021-04-15T00:00:00",
+      "fastqfiles": [
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-2/AB-1234-SampleA-2_S2_L001_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "55a35bd5ee20f507368bca2eb14b72d8",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-2/AB-1234-SampleA-2_S2_L001_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "e34c9ddcd657d59808981796718295e5",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-2/AB-1234-SampleA-2_S2_L002_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "2e8abc3dce5dd0faeeeda7210b013507",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleA-2/AB-1234-SampleA-2_S2_L002_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "0e172ee34f38c7af2613df53b98e8a09",
+          "checksum_method": "MD5"
+        }
+      ]
+    },
+    {
+      "run_alias": "AB-1234-AB-1234-SampleB-BXYZ321XY",
+      "run_center": "National Genomics Infrastructure, Uppsala",
+      "experiment": {
+        "alias": "AB-1234-AB-1234-SampleB-NovaSeq",
+        "project": {
+          "project_id": "AB-1234"
+        },
+        "sample": {
+          "sample_id": "AB-1234-SampleB"
+        }
+      },
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "run_date": "2021-04-15T00:00:00",
+      "fastqfiles": [
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleB/AB-1234-SampleB_S3_L001_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "6b7aa986481bd4255e0c30795de4accd",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleB/AB-1234-SampleB_S3_L001_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "3a9811a6fc25596cabbb403afb5731bc",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleB/AB-1234-SampleB_S3_L002_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "29f59b25ad27bb41ecf8d7d9610c4fac",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/AB-1234/Sample_AB-1234-SampleB/AB-1234-SampleB_S3_L002_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "50f69d7f56a96b86f38865f75d661bf7",
+          "checksum_method": "MD5"
+        }
+      ]
+    },
+    {
+      "run_alias": "CD-5678-CD-5678-SampleA-1-BXYZ321XY",
+      "run_center": "National Genomics Infrastructure, Uppsala",
+      "experiment": {
+        "alias": "CD-5678-CD-5678-SampleA-1-NovaSeq",
+        "project": {
+          "project_id": "CD-5678"
+        },
+        "sample": {
+          "sample_id": "CD-5678-SampleA-1"
+        }
+      },
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "run_date": "2021-04-15T00:00:00",
+      "fastqfiles": [
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L001_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "05b5b747622c93263c8841ce25fde438",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L001_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "f74c58e2b2045e7c98501db6fc00accb",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L003_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "97c71529c101eb0fe7d074a1d997b8fb",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-1/CD-5678-SampleA-1_S4_L003_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "78b4ffb6f960dbef316f8c6f113a7c5f",
+          "checksum_method": "MD5"
+        }
+      ]
+    },
+    {
+      "run_alias": "CD-5678-CD-5678-SampleA-2-BXYZ321XY",
+      "run_center": "National Genomics Infrastructure, Uppsala",
+      "experiment": {
+        "alias": "CD-5678-CD-5678-SampleA-2-NovaSeq",
+        "project": {
+          "project_id": "CD-5678"
+        },
+        "sample": {
+          "sample_id": "CD-5678-SampleA-2"
+        }
+      },
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "run_date": "2021-04-15T00:00:00",
+      "fastqfiles": [
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L001_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "540572f70c8d47213bb046d1accc2532",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L001_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "46948c9a70df0185cd88db2e108c012e",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L003_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "0e7c27a4571a02f7a079448784d22194",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleA-2/CD-5678-SampleA-2_S5_L003_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "e4e734f9f41d754dfe09083e8726f1ab",
+          "checksum_method": "MD5"
+        }
+      ]
+    },
+    {
+      "run_alias": "CD-5678-CD-5678-SampleB-BXYZ321XY",
+      "run_center": "National Genomics Infrastructure, Uppsala",
+      "experiment": {
+        "alias": "CD-5678-CD-5678-SampleB-NovaSeq",
+        "project": {
+          "project_id": "CD-5678"
+        },
+        "sample": {
+          "sample_id": "CD-5678-SampleB"
+        }
+      },
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "run_date": "2021-04-15T00:00:00",
+      "fastqfiles": [
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L001_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "dac4c8dd69843e6cdc997cef3122c404",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L001_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "1611c36835b1a2560fd82150735fd22e",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L003_R1_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "31a9e96d6cf59599889e111d154df900",
+          "checksum_method": "MD5"
+        },
+        {
+          "filepath": "tests/resources/210415_A00001_0123_BXYZ321XY/Unaligned/Project_CD-5678/CD-5678-SampleB/CD-5678-SampleB_S6_L003_R2_001.fastq.gz",
+          "filetype": "fastq",
+          "checksum": "bb921ed31f96fd699bb2c6ee53d06ea5",
+          "checksum_method": "MD5"
+        }
+      ]
+    }
+  ]
+}

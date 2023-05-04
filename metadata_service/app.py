@@ -16,17 +16,13 @@ from metadata_service.process import MetadataProcessRunner
 log = logging.getLogger(__name__)
 
 
-def setup_routes(app):
-    metadata_exec = app["config"].get(
-        "snpseq_metadata_executable",
-        "snpseq_metadata")
-    proc_run = MetadataProcessRunner(
-        metadata_executable=metadata_exec)
-
-    export = ExportHandler(process_runner=proc_run)
-    version = VersionHandler()
-    app.router.add_get(app["config"]["base_url"] + "/version", version.version)
-    app.router.add_get(app["config"]["base_url"] + "/export/{host}/{runfolder}", export.export)
+def setup_routes(app, version_handler, export_handler):
+    app.router.add_get(
+        app["config"]["base_url"] + "/version",
+        version_handler.version)
+    app.router.add_get(
+        app["config"]["base_url"] + "/export/{host}/{runfolder}",
+        export_handler.export)
 
 
 def setup_log(config):
@@ -75,20 +71,35 @@ def load_config(cfgroot):
     return config["app.yaml"]
 
 
-async def data_session(app):
-    app['data_session'] = aiohttp.ClientSession(app['config']['snpseq_data_url'])
-    yield
-    await app['data_session'].close()
+def setup_app(
+        cfgroot,
+        metadata_executable_path=None,
+        process_runner_cls=MetadataProcessRunner,
+        data_session_cls=SnpseqDataRequest,
+        version_handler_cls=VersionHandler,
+        export_handler_cls=ExportHandler):
 
-
-def setup_app(cfgroot):
     conf = load_config(cfgroot)
     app = aiohttp.web.Application()
+
+    session = data_session_cls(conf.get("snpseq_data_url"))
+
+    metadata_exec = metadata_executable_path or conf.get(
+        "snpseq_metadata_executable",
+        "snpseq_metadata")
+    proc_run = process_runner_cls(
+        metadata_executable=metadata_exec)
+
+    export_handler_obj = export_handler_cls(process_runner=proc_run)
+    version_handler_obj = version_handler_cls()
+
     app['config'] = conf
-    session = SnpseqDataRequest(conf.get("snpseq_data_url"))
     app['session'] = session
     app.cleanup_ctx.append(session.external_session)
-    setup_routes(app)
+    setup_routes(
+        app,
+        version_handler=version_handler_obj,
+        export_handler=export_handler_obj)
     return app
 
 
@@ -97,4 +108,4 @@ def start():
     app = setup_app(args.configroot)
     port = int(app['config'].get("port", 8080))
     log.info(f"starting metadata-service on port {port}...")
-    aiohttp.web.run_app(app, host="127.0.0.1", port=port)
+    aiohttp.web.run_app(app, port=port)

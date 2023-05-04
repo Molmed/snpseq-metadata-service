@@ -2,6 +2,7 @@
 import aiohttp.web
 import importlib.metadata
 import json
+import logging
 import os
 import pathlib
 import pytest
@@ -9,6 +10,11 @@ import re
 import shutil
 
 import metadata_service.app
+import metadata_service.clients
+import metadata_service.process
+
+
+log = logging.getLogger(__name__)
 
 
 @pytest.fixture
@@ -23,7 +29,10 @@ def load_config(test_config):
 
 @pytest.fixture
 def cli(event_loop, aiohttp_client, test_config):
-    app = metadata_service.app.setup_app(test_config)
+    app = metadata_service.app.setup_app(
+        test_config,
+        process_runner_cls=MetadataTestProcessRunner,
+        data_session_cls=SnpseqDataTestRequest)
     return event_loop.run_until_complete(aiohttp_client(app))
 
 
@@ -36,7 +45,7 @@ async def snpseq_data_server(aiohttp_server, load_config):
     async def snpseq_data(request):
         q = request.query
         response_path = pathlib.Path(
-            f"{load_config['datadir']}/test_data/snpseq_data_{q['name']}.json")
+            f"{load_config['datadir']}/test_data/{q['name']}.lims.json")
         with open(response_path) as fh:
             return aiohttp.web.json_response(data=json.load(fh), status=200)
 
@@ -47,6 +56,54 @@ async def snpseq_data_server(aiohttp_server, load_config):
         aiohttp.web.get("/api/containers", snpseq_data)])
 
     yield await aiohttp_server(app, port=int(port))
+
+
+class SnpseqDataTestRequest(metadata_service.clients.SnpseqDataRequest):
+
+    async def external_session(self, app):
+        yield
+
+    async def request_snpseq_data_metadata(self, runfolder_path, outdir):
+        flowcell_id = self.flowcellid_from_runfolder(runfolder_path)
+        outfile = os.path.join(outdir, f"{flowcell_id}.lims.json")
+        srcfile = os.path.join("tests", "test_data", os.path.basename(outfile))
+        shutil.copy(srcfile, outfile)
+        return outfile
+
+
+class MetadataTestProcessRunner(metadata_service.process.MetadataProcessRunner):
+
+    def __init__(self, metadata_executable):
+        super(MetadataTestProcessRunner, self).__init__(metadata_executable="echo")
+
+    def extract_runfolder_metadata(self, *args):
+        outfile = super(MetadataTestProcessRunner, self).extract_runfolder_metadata(
+            *args)
+        srcfile = os.path.join("tests", "test_data", os.path.basename(outfile))
+        shutil.copy(srcfile, outfile)
+        return outfile
+
+    def extract_snpseq_data_metadata(self, *args):
+        outfile = super(MetadataTestProcessRunner, self).extract_snpseq_data_metadata(
+            *args)
+        srcfile = os.path.join("tests", "test_data", os.path.basename(outfile))
+        shutil.copy(srcfile, outfile)
+        return outfile
+
+    def export_runfolder_metadata(self, *args):
+        super(MetadataTestProcessRunner, self).export_runfolder_metadata(
+            *args)
+        outdir = args[-1]
+        srcdir = os.path.join("tests", "test_data")
+        outfiles = []
+        for srcfile in filter(
+                lambda f: f.endswith(".xml"),
+                os.listdir(srcdir)):
+            outfiles.append(os.path.join(outdir, srcfile))
+            shutil.copy(
+                os.path.join(srcdir, srcfile),
+                outfiles[-1])
+        return outfiles
 
 
 async def test_version(cli):

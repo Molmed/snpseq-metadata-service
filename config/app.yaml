@@ -1,0 +1,16 @@
+---
+
+# the service will listen on this port
+port: 8345
+
+# the base url preceding the service endpoint
+base_url: /api/1.0
+
+# the location on the server under which runfolders are stored
+datadir: tests/resources
+
+# the url where the snpseq-data service can be accessed
+snpseq_data_url: http://localhost:9191
+
+# the path to the snpseq_metadata python package main script
+snpseq_metadata_executable: .venv/bin/snpseq_metadata

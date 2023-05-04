@@ -1,0 +1,137 @@
+{
+  "experiments": [
+    {
+      "alias": "AB-1234-AB-1234-SampleA-1-NovaSeq",
+      "project": {
+        "project_id": "AB-1234"
+      },
+      "title": "AB-1234 - AB-1234-SampleA-1 - WG re-seq Human - gDNA - TruSeq DNA PCR-Free Sample Preparation kit LT",
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "AB-1234-SampleA-1"
+        },
+        "application": "WG re-seq Human",
+        "sample_type": "gDNA",
+        "library_kit": "TruSeq DNA PCR-Free Sample Preparation kit LT",
+        "is_paired": true
+      }
+    },
+    {
+      "alias": "AB-1234-AB-1234-SampleA-2-NovaSeq",
+      "project": {
+        "project_id": "AB-1234"
+      },
+      "title": "AB-1234 - AB-1234-SampleA-2 - WG re-seq - gDNA - thruplex smarter dna-seq kit",
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "AB-1234-SampleA-2"
+        },
+        "application": "WG re-seq",
+        "sample_type": "gDNA",
+        "library_kit": "thruplex smarter dna-seq kit",
+        "is_paired": true
+      }
+    },
+    {
+      "alias": "AB-1234-AB-1234-SampleB-NovaSeq",
+      "project": {
+        "project_id": "AB-1234"
+      },
+      "title": "AB-1234 - AB-1234-SampleB - olink explore - serum - olink explore 1536",
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "AB-1234-SampleB"
+        },
+        "application": "olink explore",
+        "sample_type": "serum",
+        "library_kit": "olink explore 1536",
+        "is_paired": true
+      }
+    },
+    {
+      "alias": "CD-5678-CD-5678-SampleA-1-NovaSeq",
+      "project": {
+        "project_id": "CD-5678"
+      },
+      "title": "CD-5678 - CD-5678-SampleA-1 - target re-seq - gDNA - twist human core exome",
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "CD-5678-SampleA-1"
+        },
+        "application": "target re-seq",
+        "sample_type": "gDNA",
+        "library_kit": "twist human core exome",
+        "is_paired": true
+      }
+    },
+    {
+      "alias": "CD-5678-CD-5678-SampleA-2-NovaSeq",
+      "project": {
+        "project_id": "CD-5678"
+      },
+      "title": "CD-5678 - CD-5678-SampleA-2 - epigenetics - gDNA - nebnext enzymatic methyl-seq kit",
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "CD-5678-SampleA-2"
+        },
+        "application": "epigenetics",
+        "sample_type": "gDNA",
+        "library_kit": "nebnext enzymatic methyl-seq kit",
+        "is_paired": true
+      }
+    },
+    {
+      "alias": "CD-5678-CD-5678-SampleB-NovaSeq",
+      "project": {
+        "project_id": "CD-5678"
+      },
+      "title": "CD-5678 - CD-5678-SampleB - WG re-seq Human - gDNA - TruSeq DNA PCR-Free Sample Preparation kit LT",
+      "platform": {
+        "model_name": "NovaSeq"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "CD-5678-SampleB"
+        },
+        "application": "WG re-seq Human",
+        "sample_type": "gDNA",
+        "library_kit": "TruSeq DNA PCR-Free Sample Preparation kit LT",
+        "is_paired": true
+      }
+    },
+    {
+      "alias": "EF-9012-EF-9012-608-HiSeqX",
+      "project": {
+        "project_id": "EF-9012"
+      },
+      "title": "EF-9012 - EF-9012-608 - WG re-seq Human - gDNA - TruSeq DNA PCR-Free Sample Preparation kit LT",
+      "platform": {
+        "model_name": "HiSeqX"
+      },
+      "library": {
+        "sample": {
+          "sample_id": "EF-9012-608"
+        },
+        "application": "WG re-seq Human",
+        "sample_type": "gDNA",
+        "library_kit": "TruSeq DNA PCR-Free Sample Preparation kit LT",
+        "is_paired": true
+      }
+    }
+  ]
+}

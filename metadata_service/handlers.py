@@ -17,10 +17,13 @@ class VersionHandler:
         self.version_str = importlib.metadata.version('metadata-service')
 
     async def version(self, request):
-        return aiohttp.web.json_response(
-            {
-                'version': self.version_str},
-            status=200)
+        try:
+            return aiohttp.web.json_response(
+                {
+                    'version': self.version_str},
+                status=200)
+        except Exception as ex:
+            return aiohttp.web.json_response({'exception': ex}, status=500)
 
 
 class ExportHandler:
@@ -30,30 +33,33 @@ class ExportHandler:
 
     async def export(self, request):
 
-        host = request.match_info["host"]
-        runfolder = request.match_info["runfolder"]
+        try:
+            host = request.match_info["host"]
+            runfolder = request.match_info["runfolder"]
 
-        runfolder_path = pathlib.Path(
-            request.app["config"].get("datadir", "."),
-            host,
-            "runfolders",
-            runfolder)
-        metadata_export_path = os.path.join(runfolder_path, "metadata")
+            runfolder_path = pathlib.Path(
+                request.app["config"].get("datadir", "."),
+                host,
+                "runfolders",
+                runfolder)
+            metadata_export_path = os.path.join(runfolder_path, "metadata")
 
-        with tempfile.TemporaryDirectory(prefix="extract", suffix="runfolder") as outdir:
-            runfolder_extract = self.process_runner.extract_runfolder_metadata(
-                runfolder_path,
-                outdir)
-            lims_data = await request.app['session'].request_snpseq_data_metadata(
-                runfolder_path,
-                outdir)
-            snpseq_data_extract = self.process_runner.extract_snpseq_data_metadata(
-                lims_data,
-                outdir)
+            with tempfile.TemporaryDirectory(prefix="extract", suffix="runfolder") as outdir:
+                runfolder_extract = self.process_runner.extract_runfolder_metadata(
+                    runfolder_path,
+                    outdir)
+                lims_data = await request.app['session'].request_snpseq_data_metadata(
+                    runfolder_path,
+                    outdir)
+                snpseq_data_extract = self.process_runner.extract_snpseq_data_metadata(
+                    lims_data,
+                    outdir)
 
-            metadata_export = self.process_runner.export_runfolder_metadata(
-                    runfolder_extract,
-                    snpseq_data_extract,
-                    metadata_export_path)
+                metadata_export = self.process_runner.export_runfolder_metadata(
+                        runfolder_extract,
+                        snpseq_data_extract,
+                        metadata_export_path)
 
-        return aiohttp.web.json_response({'metadata': metadata_export}, status=200)
+            return aiohttp.web.json_response({'metadata': metadata_export}, status=200)
+        except Exception as ex:
+            return aiohttp.web.json_response({'exception': ex}, status=500)

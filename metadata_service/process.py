@@ -31,7 +31,7 @@ class ProcessRunner:
                 f"{err.cmd} exited with exit-code {err.returncode}")
             log.error(
                 err.stderr)
-            raise
+            raise Exception(err.stdout)
         return proc
 
 

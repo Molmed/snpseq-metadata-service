@@ -23,7 +23,7 @@ class VersionHandler:
                     'version': self.version_str},
                 status=200)
         except Exception as ex:
-            return aiohttp.web.json_response({'exception': ex}, status=500)
+            return aiohttp.web.json_response({'exception': str(ex)}, status=500)
 
 
 class ExportHandler:
@@ -62,4 +62,4 @@ class ExportHandler:
 
             return aiohttp.web.json_response({'metadata': metadata_export}, status=200)
         except Exception as ex:
-            return aiohttp.web.json_response({'exception': ex}, status=500)
+            return aiohttp.web.json_response({'exception': str(ex)}, status=500)

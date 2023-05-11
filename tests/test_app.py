@@ -23,6 +23,17 @@ def test_runfolder():
 
 
 @pytest.fixture
+def test_snpseq_data_path(test_runfolder):
+    return pathlib.Path(f"tests/test_data/{test_runfolder.split('_')[-1][1:]}.lims.json")
+
+
+@pytest.fixture
+def test_snpseq_data_json(test_snpseq_data_path):
+    with open(test_snpseq_data_path) as fh:
+        return json.load(fh)
+
+
+@pytest.fixture
 def test_config():
     return pathlib.Path("tests/config")
 

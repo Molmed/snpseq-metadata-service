@@ -1,4 +1,4 @@
-import json
+
 import logging
 import os
 import pathlib
@@ -62,4 +62,5 @@ class ExportHandler:
 
             return aiohttp.web.json_response({'metadata': metadata_export}, status=200)
         except Exception as ex:
+            log.error(str(ex))
             return aiohttp.web.json_response({'exception': str(ex)}, status=500)

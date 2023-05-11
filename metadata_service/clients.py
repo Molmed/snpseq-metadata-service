@@ -30,16 +30,27 @@ class SnpseqDataRequest(ExternalRequest):
         flowcell_id = flowcell_id[1:] if flowcell_id[0] in "AB" else flowcell_id
         return flowcell_id
 
+    @staticmethod
+    def data_request_url(flowcell_id):
+        return '/api/containers', {
+            'name': flowcell_id}
+
     @safe_outdir
     async def request_snpseq_data_metadata(self, runfolder_path, outdir):
         flowcell_id = self.flowcellid_from_runfolder(runfolder_path)
         lims_json = os.path.join(outdir, f"{flowcell_id}.lims.json")
+        url, params = self.data_request_url(flowcell_id)
         resp = await self.session.get(
-            '/api/containers',
-            params={
-                'name': flowcell_id
-            })
+            url,
+            params=params)
+        if not resp.ok:
+            raise Exception(
+                f"{self.__class__.__name__} received response status {resp.status} from "
+                f"{resp.url}: {resp.reason}")
         with open(lims_json, "w") as fh:
-            json.dump(await resp.json(), fh, indent=2)
-        return lims_json
+            if resp.content_type == 'application/json':
+                json.dump(await resp.json(), fh, indent=2)
+            else:
+                fh.write(await resp.text())
 
+        return lims_json

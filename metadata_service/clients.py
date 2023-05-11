@@ -43,14 +43,21 @@ class SnpseqDataRequest(ExternalRequest):
         resp = await self.session.get(
             url,
             params=params)
-        if not resp.ok:
+
+        data = {}
+        try:
+            if resp.content_type == 'application/json':
+                data = await resp.json()
+            else:
+                data = json.loads(await resp.text())
+            if not resp.ok:
+                raise Exception()
+        except Exception:
             raise Exception(
                 f"{self.__class__.__name__} received response status {resp.status} from "
-                f"{resp.url}: {resp.reason}")
+                f"{resp.url}: {data.get('error_message', resp.reason)}")
+
         with open(lims_json, "w") as fh:
-            if resp.content_type == 'application/json':
-                json.dump(await resp.json(), fh, indent=2)
-            else:
-                fh.write(await resp.text())
+            json.dump(data, fh, indent=2)
 
         return lims_json

@@ -18,6 +18,22 @@ log = logging.getLogger(__name__)
 
 
 @pytest.fixture
+def test_runfolder():
+    return "210415_A00001_0123_BXYZ321XY"
+
+
+@pytest.fixture
+def test_snpseq_data_path(test_runfolder):
+    return pathlib.Path(f"tests/test_data/{test_runfolder.split('_')[-1][1:]}.lims.json")
+
+
+@pytest.fixture
+def test_snpseq_data_json(test_snpseq_data_path):
+    with open(test_snpseq_data_path) as fh:
+        return json.load(fh)
+
+
+@pytest.fixture
 def test_config():
     return pathlib.Path("tests/config")
 
@@ -47,7 +63,20 @@ async def snpseq_data_server(aiohttp_server, load_config):
         response_path = pathlib.Path(
             f"{load_config['datadir']}/test_data/{q['name']}.lims.json")
         with open(response_path) as fh:
-            return aiohttp.web.json_response(data=json.load(fh), status=200)
+            data = json.load(fh)
+
+        status = q.get("status", 200)
+        content_type = q.get("content_type", "application/json")
+
+        if content_type == "application/json":
+            return aiohttp.web.json_response(
+                data=data,
+                status=status)
+
+        return aiohttp.web.Response(
+            text=json.dumps(data),
+            content_type=content_type,
+            status=status)
 
     m = re.search(r'[a-z.]+:(\d{4,})', load_config['snpseq_data_url'])
     port = int(m.group(1))
@@ -114,11 +143,11 @@ async def test_version(cli):
     assert ver["version"] == importlib.metadata.version('metadata-service')
 
 
-async def test_export(snpseq_data_server, cli):
+async def test_export(snpseq_data_server, cli, test_runfolder):
     base_url = cli.server.app["config"].get("base_url", "")
     datadir = cli.server.app["config"]["datadir"]
     host = "test_data"
-    runfolder = "210415_A00001_0123_BXYZ321XY"
+    runfolder = test_runfolder
     metadatadir = os.path.join(
         datadir,
         host,

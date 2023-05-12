@@ -30,7 +30,8 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "pytest-asyncio",
-    "pytest-aiohttp"
+    "pytest-aiohttp",
+    "mock"
 ]
 
 [project.scripts]

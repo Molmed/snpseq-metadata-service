@@ -60,8 +60,8 @@ async def snpseq_data_server(aiohttp_server, load_config):
     """
     async def snpseq_data(request):
         q = request.query
-        response_path = pathlib.Path(
-            f"{load_config['datadir']}/test_data/{q['name']}.lims.json")
+        fcid = q.get("name")
+        response_path = pathlib.Path("tests", "test_data", f"{fcid}.lims.json")
         with open(response_path) as fh:
             data = json.load(fh)
 
@@ -85,6 +85,18 @@ async def snpseq_data_server(aiohttp_server, load_config):
         aiohttp.web.get("/api/containers", snpseq_data)])
 
     yield await aiohttp_server(app, port=int(port))
+
+
+def get_projects_from_jsonfile(jsonfile, pattern=None):
+    projects = []
+    pattern = pattern or r'"project(?:_id)?": "(\w{2}-\d{4})"'
+    with open(jsonfile, "r") as fh:
+        for line in fh:
+            m = re.search(pattern, line)
+            if m is not None:
+                projects.append(m.group(1))
+
+    return list(sorted(list(set(projects))))
 
 
 class SnpseqDataTestRequest(metadata_service.clients.SnpseqDataRequest):
@@ -125,13 +137,26 @@ class MetadataTestProcessRunner(metadata_service.process.MetadataProcessRunner):
         outdir = args[-1]
         srcdir = os.path.join("tests", "test_data")
         outfiles = []
+
+        # extract the "original" project names from the lims export and the "tweaked" from the lims
+        # extract
+        projects = [[], []]
+        for i, jsonfile in enumerate((args[1], args[1].replace(".ngi.json", ".json"))):
+            projects[i] = get_projects_from_jsonfile(jsonfile)
+
         for srcfile in filter(
                 lambda f: f.endswith(".xml"),
                 os.listdir(srcdir)):
-            outfiles.append(os.path.join(outdir, srcfile))
+            outfile = srcfile
+            for prj_s, prj_c in zip(projects[0], projects[1]):
+                outfile = outfile.replace(prj_s, prj_c)
+            outfiles.append(
+                os.path.join(outdir, outfile)
+            )
             shutil.copy(
                 os.path.join(srcdir, srcfile),
-                outfiles[-1])
+                outfiles[-1]
+            )
         return outfiles
 
 
@@ -143,28 +168,67 @@ async def test_version(cli):
     assert ver["version"] == importlib.metadata.version('metadata-service')
 
 
-async def test_export(snpseq_data_server, cli, test_runfolder):
+async def _export_helper(
+        snpseq_data_server,
+        cli,
+        test_runfolder,
+        test_snpseq_data_path,
+        lims_data_cache
+):
     base_url = cli.server.app["config"].get("base_url", "")
     datadir = cli.server.app["config"]["datadir"]
     host = "test_data"
     runfolder = test_runfolder
+    datadir = datadir.format(
+        host=host,
+        runfolder=runfolder
+    )
     metadatadir = os.path.join(
         datadir,
-        host,
-        "runfolders",
-        runfolder,
         "metadata")
 
     shutil.rmtree(metadatadir, ignore_errors=True)
+
+    request_url = f"{base_url}/export/{host}/{runfolder}"
+    projects = [[], []]
+    projects[0] = get_projects_from_jsonfile(test_snpseq_data_path)
+    projects[1] = list(projects[0])
+
+    if lims_data_cache:
+        os.makedirs(metadatadir)
+
+        # copy the LIMS export file to the metadata dir
+        lims_data = os.path.join(
+            metadatadir,
+            os.path.basename(test_snpseq_data_path)
+        )
+
+        # tweak the project names so that we can make sure that the cache was used and not
+        # the mocked snpseq-data file
+        projects[1] = [
+            "-".join([
+                prj.split("-")[0][::-1],
+                prj.split("-")[1][::-1]
+            ]) for prj in projects[0]
+        ]
+        with open(test_snpseq_data_path, "r") as rh, open(lims_data, "w") as wh:
+            for line in rh:
+                for prj_s, prj_c in zip(*projects):
+                    line = line.replace(prj_s, prj_c)
+                wh.write(line)
+
+        # pass the name of the lims cache json file as a query parameter
+        request_url = f"{request_url}?lims_data={os.path.basename(test_snpseq_data_path)}"
+
     expected_files = sorted([
         os.path.join(
             metadatadir,
             f"{prj}-{typ}.xml")
-        for prj in ["AB-1234", "CD-5678", "EF-9012"]
+        for prj in projects[1]
         for typ in ["experiment", "run"]
     ])
 
-    resp = await cli.get(f"{base_url}/export/{host}/{runfolder}")
+    resp = await cli.get(request_url)
     json_resp = await resp.json()
 
     assert resp.status == 200
@@ -175,3 +239,33 @@ async def test_export(snpseq_data_server, cli, test_runfolder):
         assert os.path.exists(metafile)
 
     shutil.rmtree(metadatadir)
+
+
+async def test_export_with_lims_api(
+        snpseq_data_server,
+        cli,
+        test_runfolder,
+        test_snpseq_data_path
+):
+    await _export_helper(
+        snpseq_data_server,
+        cli,
+        test_runfolder,
+        test_snpseq_data_path,
+        lims_data_cache=False,
+    )
+
+
+async def test_export_with_lims_cache(
+        snpseq_data_server,
+        cli,
+        test_runfolder,
+        test_snpseq_data_path
+):
+    await _export_helper(
+        snpseq_data_server,
+        cli,
+        test_runfolder,
+        test_snpseq_data_path,
+        lims_data_cache=True,
+    )

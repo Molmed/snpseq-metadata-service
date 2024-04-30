@@ -2,6 +2,6 @@
 
 port: 9345
 base_url: /api/1.0
-datadir: tests
+datadir: tests/{host}/runfolders/{runfolder}
 snpseq_data_url: http://localhost:9191
 snpseq_metadata_executable: /Users/pontus/Documents/code/snpseq_metadata/venv_/bin/snpseq_metadata

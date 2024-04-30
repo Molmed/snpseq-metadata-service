@@ -7,7 +7,9 @@ port: 8345
 base_url: /api/1.0
 
 # the location on the server under which runfolders are stored
-datadir: tests/resources
+# the parameters "host" and "runfolder" can be used inside curly brackets (e.g. {host}) and will be substituted
+# for each request
+datadir: tests/resources/{host}/runfolders/{runfolder}
 
 # the url where the snpseq-data service can be accessed
 snpseq_data_url: http://localhost:9191

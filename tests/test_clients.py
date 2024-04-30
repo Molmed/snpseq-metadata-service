@@ -22,7 +22,9 @@ async def test_snpseq_data_client(
         test_runfolder,
         test_snpseq_data_path,
         test_snpseq_data_json):
-    rq = SnpseqDataRequest(external_url=f"http://{snpseq_data_server.host}:{snpseq_data_server.port}")
+    rq = SnpseqDataRequest(
+        external_url=f"http://{snpseq_data_server.host}:{snpseq_data_server.port}"
+    )
     rq.session = aiohttp.ClientSession(rq.external_url)
     flowcell_id = rq.flowcellid_from_runfolder(test_runfolder)
     request_urls = (

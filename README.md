@@ -16,12 +16,12 @@ runfolder, as well as combine project and sequencing run metadata and export to 
 
 - You will need python >=3.8
 
-- The service will expect the [snpseq_metadata](https://github.com/Molmed/snpseq_metadata) Python package to be
+- The service will expect the [snpseq_metadata](https://github.com/Molmed/snpseq_metadata) (>= v2.2.0) Python package to be
 available in the environment (refer to the
 [README](https://github.com/Molmed/snpseq_metadata/blob/main/README.md#installation) for installation instructions).
 
-- The service needs the url of an accessible [snpseq-data](https://gitlab.snpseq.medsci.uu.se/shared/snpseq-data)
-service.
+- Unless data extracted from Clarity LIMS will be supplied in a separate json file, the service needs the url of an 
+accessible [snpseq-data](https://gitlab.snpseq.medsci.uu.se/shared/snpseq-data) service.
 
 ### Deploy
 

@@ -1,0 +1,3 @@
+FileType		Read submission file type
+study	sample	design_description	library_construction_protocol	library_name	library_strategy	library_source	library_selection	library_layout	insert_size	instrument_model	forward_file_name	forward_file_md5	reverse_file_name	reverse_file_md5
+EF-9012	EF-9012-608		TruSeq DNA PCR-Free Sample Preparation kit LT	Sample_EF-9012-608_Sample_EF-9012-608	WGS	GENOMIC	RANDOM	PAIRED	358	HiSeq X Ten				

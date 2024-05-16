@@ -66,12 +66,12 @@ class MetadataProcessRunner(ProcessRunner):
                   f"--outdir {outdir} " \
                   f"{runfolder_extract} " \
                   f"{snpseq_data_extract} " \
-                  f"xml"
+                  f"xml tsv"
         self.run_process(cmdline)
         return [
             os.path.join(
                 outdir,
                 xmlfile)
             for xmlfile in os.listdir(outdir)
-            if xmlfile.endswith(".xml")
+            if xmlfile.endswith(".xml") or xmlfile.endswith(".tsv")
         ]

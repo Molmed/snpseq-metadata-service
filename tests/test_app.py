@@ -145,7 +145,7 @@ class MetadataTestProcessRunner(metadata_service.process.MetadataProcessRunner):
             projects[i] = get_projects_from_jsonfile(jsonfile)
 
         for srcfile in filter(
-                lambda f: f.endswith(".xml"),
+                lambda f: f.endswith(".xml") or f.endswith(".tsv"),
                 os.listdir(srcdir)):
             outfile = srcfile
             for prj_s, prj_c in zip(projects[0], projects[1]):
@@ -220,13 +220,22 @@ async def _export_helper(
         # pass the name of the lims cache json file as a query parameter
         request_url = f"{request_url}?lims_data={os.path.basename(test_snpseq_data_path)}"
 
-    expected_files = sorted([
-        os.path.join(
-            metadatadir,
-            f"{prj}-{typ}.xml")
-        for prj in projects[1]
-        for typ in ["experiment", "run"]
-    ])
+    expected_files = []
+    for prj in projects[1]:
+        expected_files.append(
+            os.path.join(
+                metadatadir,
+                f"{prj}.metadata.ena.tsv"
+            )
+        )
+        for typ in ["experiment", "run"]:
+            expected_files.append(
+                os.path.join(
+                    metadatadir,
+                    f"{prj}-{typ}.xml"
+                )
+            )
+    expected_files = sorted(expected_files)
 
     resp = await cli.get(request_url)
     json_resp = await resp.json()
